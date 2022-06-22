@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://611Bit.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scorekeeper.gd" type="Script" id=2]
+
+[node name="Scorekeeper" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Damages" type="Label" parent="."]
+margin_left = 8.0
+margin_top = -48.0
+margin_right = 160.0
+margin_bottom = -16.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Damages: 0$"
+
+[node name="Tween" type="Tween" parent="."]

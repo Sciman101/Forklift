@@ -1,0 +1,296 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://forklift.png" type="Texture" id=1]
+[ext_resource path="res://SpriteStack.gd" type="Script" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://Cone.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16.5, 8 )
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment() {
+	
+	vec4 col = texture(TEXTURE,UV);
+	
+	//Get alpha val of adjacent pixels
+    vec2 p = TEXTURE_PIXEL_SIZE;
+    
+    float a = texture(TEXTURE,UV+vec2(p.x,0)).a;
+    a += texture(TEXTURE,UV+vec2(-p.x,0)).a;
+    a += texture(TEXTURE,UV+vec2(0,p.y)).a;
+    a += texture(TEXTURE,UV+vec2(0,-p.y)).a;
+    
+    //Using found alpha value, determine the opacity of the outline
+    
+    a = step(a,.5);//Clamp the a value
+    col.rgb = mix(vec3(0), col.rgb, col.a);
+    col.a = step(a, col.a);
+    
+    //Get palette color
+    COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="Testing" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Cones" type="Node2D" parent="YSort"]
+
+[node name="Cone" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -303, 69 )
+
+[node name="Cone2" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -285, 69 )
+
+[node name="Cone3" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -268, 69 )
+
+[node name="Cone4" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -250, 69 )
+
+[node name="Cone5" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -232, 69 )
+
+[node name="Cone6" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -215, 69 )
+
+[node name="Cone7" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -303, 21 )
+
+[node name="Cone8" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -285, 21 )
+
+[node name="Cone9" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -268, 21 )
+
+[node name="Cone10" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -250, 21 )
+
+[node name="Cone11" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -232, 21 )
+
+[node name="Cone12" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -215, 21 )
+
+[node name="Cone13" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -201, 69 )
+
+[node name="Cone14" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -183, 69 )
+
+[node name="Cone15" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -166, 69 )
+
+[node name="Cone16" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -148, 69 )
+
+[node name="Cone17" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -130, 69 )
+
+[node name="Cone18" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -113, 69 )
+
+[node name="Cone19" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -201, 21 )
+
+[node name="Cone20" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -183, 21 )
+
+[node name="Cone21" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -166, 21 )
+
+[node name="Cone22" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -148, 21 )
+
+[node name="Cone23" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -130, 21 )
+
+[node name="Cone24" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -113, 21 )
+
+[node name="Cone25" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -97, 69 )
+
+[node name="Cone26" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -79, 69 )
+
+[node name="Cone27" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -62, 69 )
+
+[node name="Cone28" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -44, 69 )
+
+[node name="Cone29" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -26, 69 )
+
+[node name="Cone30" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -9, 69 )
+
+[node name="Cone31" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -97, 21 )
+
+[node name="Cone32" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -79, 21 )
+
+[node name="Cone33" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -62, 21 )
+
+[node name="Cone34" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -44, 21 )
+
+[node name="Cone35" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -26, 21 )
+
+[node name="Cone36" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( -9, 21 )
+
+[node name="Cone37" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 6, 69 )
+
+[node name="Cone38" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 24, 69 )
+
+[node name="Cone39" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 41, 69 )
+
+[node name="Cone40" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 59, 69 )
+
+[node name="Cone41" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 77, 69 )
+
+[node name="Cone42" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 94, 69 )
+
+[node name="Cone43" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 6, 21 )
+
+[node name="Cone44" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 24, 21 )
+
+[node name="Cone45" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 41, 21 )
+
+[node name="Cone46" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 59, 21 )
+
+[node name="Cone47" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 77, 21 )
+
+[node name="Cone48" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 94, 21 )
+
+[node name="Cone49" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 108, 69 )
+
+[node name="Cone50" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 126, 69 )
+
+[node name="Cone51" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 143, 69 )
+
+[node name="Cone52" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 161, 69 )
+
+[node name="Cone53" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 179, 69 )
+
+[node name="Cone54" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 196, 69 )
+
+[node name="Cone55" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 108, 21 )
+
+[node name="Cone56" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 126, 21 )
+
+[node name="Cone57" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 143, 21 )
+
+[node name="Cone58" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 161, 21 )
+
+[node name="Cone59" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 179, 21 )
+
+[node name="Cone60" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 196, 21 )
+
+[node name="Cone61" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 212, 69 )
+
+[node name="Cone62" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 230, 69 )
+
+[node name="Cone63" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 247, 69 )
+
+[node name="Cone64" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 265, 69 )
+
+[node name="Cone65" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 283, 69 )
+
+[node name="Cone66" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 300, 69 )
+
+[node name="Cone67" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 212, 21 )
+
+[node name="Cone68" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 230, 21 )
+
+[node name="Cone69" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 247, 21 )
+
+[node name="Cone70" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 265, 21 )
+
+[node name="Cone71" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 283, 21 )
+
+[node name="Cone72" parent="YSort/Cones" instance=ExtResource( 4 )]
+position = Vector2( 300, 21 )
+
+[node name="Player" type="KinematicBody2D" parent="YSort"]
+script = ExtResource( 3 )
+move_speed = 70.0
+acceleration = 60.0
+turn_speed = 0.025
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Player"]
+position = Vector2( 0.5, 0 )
+shape = SubResource( 3 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="YSort/Player"]
+material = SubResource( 2 )
+margin_left = -44.0
+margin_top = -49.0
+margin_right = 52.0
+margin_bottom = 79.0
+
+[node name="Viewport" type="Viewport" parent="YSort/Player/ViewportContainer"]
+size = Vector2( 96, 96 )
+transparent_bg = true
+handle_input_locally = false
+hdr = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="SpriteStack" type="Node2D" parent="YSort/Player/ViewportContainer/Viewport"]
+position = Vector2( 48, 48 )
+script = ExtResource( 2 )
+texture = ExtResource( 1 )
+num_cells = 25
+angle = 1.887
+shadow_seperation = Vector2( 1, 1 )
+draw_shadow = true
